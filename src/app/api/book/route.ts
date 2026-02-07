@@ -8,11 +8,11 @@ const TO_EMAIL = "asriidev@gmail.com";
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, phone, email, message } = body;
+    const { name, phone, address, preferredDate, preferredTime, email, message } = body;
 
-    if (!name || !phone) {
+    if (!name?.trim() || !phone?.trim() || !address?.trim() || !preferredDate || !preferredTime) {
       return NextResponse.json(
-        { error: "Name and phone are required." },
+        { error: "Name, phone, address, preferred date, and preferred time are required." },
         { status: 400 }
       );
     }
@@ -21,6 +21,9 @@ export async function POST(request: Request) {
       <h2>New Book a Service request – Cold Army</h2>
       <p><strong>Name:</strong> ${escapeHtml(name)}</p>
       <p><strong>Phone:</strong> ${escapeHtml(phone)}</p>
+      <p><strong>Address:</strong> ${escapeHtml(address)}</p>
+      <p><strong>Preferred date:</strong> ${escapeHtml(preferredDate)}</p>
+      <p><strong>Preferred time:</strong> ${escapeHtml(preferredTime)}</p>
       <p><strong>Email:</strong> ${email ? escapeHtml(email) : "(not provided)"}</p>
       <p><strong>What do they need?</strong></p>
       <p>${message ? escapeHtml(message) : "(not provided)"}</p>

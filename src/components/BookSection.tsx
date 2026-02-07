@@ -17,6 +17,9 @@ export default function BookSection() {
     const body = {
       name: formData.get("name") as string,
       phone: formData.get("phone") as string,
+      address: formData.get("address") as string,
+      preferredDate: formData.get("preferredDate") as string,
+      preferredTime: formData.get("preferredTime") as string,
       email: (formData.get("email") as string) || "",
       message: (formData.get("message") as string) || "",
     };
@@ -101,6 +104,48 @@ export default function BookSection() {
                 className="mt-1 block w-full rounded-lg border border-slate-300 px-4 py-2 shadow-sm focus:border-primary-500 focus:ring-1 focus:ring-primary-500 disabled:opacity-60"
                 placeholder="09XX XXX XXXX"
               />
+            </div>
+            <div>
+              <label htmlFor="address" className="block text-sm font-medium text-slate-700">
+                Address
+              </label>
+              <input
+                type="text"
+                id="address"
+                name="address"
+                required
+                disabled={loading}
+                className="mt-1 block w-full rounded-lg border border-slate-300 px-4 py-2 shadow-sm focus:border-primary-500 focus:ring-1 focus:ring-primary-500 disabled:opacity-60"
+                placeholder="Street, Barangay, City"
+              />
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div>
+                <label htmlFor="preferredDate" className="block text-sm font-medium text-slate-700">
+                  Preferred date
+                </label>
+                <input
+                  type="date"
+                  id="preferredDate"
+                  name="preferredDate"
+                  required
+                  disabled={loading}
+                  className="mt-1 block w-full rounded-lg border border-slate-300 px-4 py-2 shadow-sm focus:border-primary-500 focus:ring-1 focus:ring-primary-500 disabled:opacity-60"
+                />
+              </div>
+              <div>
+                <label htmlFor="preferredTime" className="block text-sm font-medium text-slate-700">
+                  Preferred time
+                </label>
+                <input
+                  type="time"
+                  id="preferredTime"
+                  name="preferredTime"
+                  required
+                  disabled={loading}
+                  className="mt-1 block w-full rounded-lg border border-slate-300 px-4 py-2 shadow-sm focus:border-primary-500 focus:ring-1 focus:ring-primary-500 disabled:opacity-60"
+                />
+              </div>
             </div>
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-slate-700">
